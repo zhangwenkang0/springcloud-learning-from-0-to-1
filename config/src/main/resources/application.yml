@@ -1,0 +1,24 @@
+server:
+  port: 8961
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+spring:
+    application:
+        name: config
+    cloud:
+        config:
+          server:
+            git:
+              uri: git@10.0.98.7:zhangwenkang/config-repo.git
+              username: zhangwenkang
+              password: kang123456
+              #本地git保存地址
+              basedir: D:\Work\HqProject\config\basedir
+#向外暴露接口 主要是为了暴露 /actuator/bus-refresh,刷新配置信息
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

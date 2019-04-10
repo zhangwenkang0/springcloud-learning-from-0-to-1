@@ -1,0 +1,19 @@
+#server:
+#  port: 7861
+eureka:
+    client:
+        service-url:
+            defaultZone: http://localhost:8761/eureka/
+spring:
+  application:
+        name: micro-service1
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+  cloud:
+    stream:
+      bindings:
+        input:
+          group: testGroup

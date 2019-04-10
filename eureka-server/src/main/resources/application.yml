@@ -1,0 +1,18 @@
+#启动端口可注释掉,VM参数中已配置
+server:
+  port: 8761
+eureka:
+  client:
+    #表示是否将自己注册到Eureka Server， 默认为true。
+    #由于当前应用就是Eureka Server， 因此设为 false；
+    register-with-eureka: false
+    #注册中心地址
+    service-url:
+      #设置成server2的端口号,相互注册
+      defaultZone: http://localhost:8761/eureka/
+  server:
+    enable-self-preservation: false
+spring:
+  application:
+    #服务名称
+    name: eureka-server

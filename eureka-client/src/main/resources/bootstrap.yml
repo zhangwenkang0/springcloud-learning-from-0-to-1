@@ -1,0 +1,28 @@
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+spring:
+  application:
+        name: client
+  cloud:
+      config:
+          discovery:
+              enabled: true
+              #Config-server的服务名
+              service-id: CONFIG
+          #环境
+          profile: dev
+          #分支
+          label: master
+#      stream:
+#        bindings:
+#          input:
+#            destination: mqTestDefault
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+

@@ -1,0 +1,32 @@
+server:
+  port: 8900
+spring:
+    application:
+          name: api-gateway
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+zuul:
+  routes:
+    # 方法1
+    # 声明一个路由规则,名称随意取名就行
+    # 该规则为 /myHi/**  路由到 /service-hi/** (**为通配符)
+    myHi:
+      # 路由路径 (路由到哪个路径)
+      path: /myHi/**
+      # 服务名 (需要路由的服务)
+      serviceId: service-hi
+      # 这里需要注意一下,使用zuul进行路由,默认不传递cookie
+      # 若要传递,添加下面的配置(内容为空就行)
+      sensitivedHeaders:
+
+    # 方法2
+    # 路由声明 简洁写法 服务名: 路由路径
+    service-hi: /myHi/**
+
+  # 忽略路径,不做路由
+  ignored-patterns:
+   - /service-hi/hi
+
