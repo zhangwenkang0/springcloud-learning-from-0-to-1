@@ -28,7 +28,7 @@ public class MqSenderTest{
     public void send2(){
         System.out.println(new Date() +"发送延迟重试消息!!!");
         //直接发消息到实际消费队列
-        amqpTemplate.convertAndSend("retry_service_queue","Hello!Retry Message!");
+        amqpTemplate.convertAndSend("retry_service_exchange","retry_service_queue","Hello!Retry Message!");
     }
 
 }
