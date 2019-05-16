@@ -6,6 +6,7 @@ eureka:
 spring:
   application:
         name: client
+#不想多开个config项目,就把config相关配置注释了
 #  cloud:
 #      config:
 #          discovery:
