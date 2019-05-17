@@ -27,3 +27,40 @@ spring:
     username: guest
     password: guest
 
+hystrix:
+  command:
+    default:
+      circuitBreaker:
+        #开启熔断
+        enabled: true
+        #滚动窗口中将使断路器跳闸的最小请求数量
+        requestVolumeThreshold: 20
+        #设置失败百分比的阈值。如果失败比率超过这个值，则断路器跳闸并且进入fallback逻辑
+        errorThresholdPercentage : 60
+      execution:
+        isolation:
+          thread:
+            #设置调用者执行的超时时间（单位毫秒）
+            timeoutInMilliseconds: 2000
+     #为某个方法设定特殊的配置 方法名
+    circuitSayHi:
+      circuitBreaker:
+         #开启熔断
+         enabled: true
+         #滚动窗口中将使断路器跳闸的最小请求数量
+         requestVolumeThreshold: 10
+         #设置失败百分比的阈值。如果失败比率超过这个值，则断路器跳闸并且进入fallback逻辑
+         errorThresholdPercentage : 40
+      execution:
+         isolation:
+            thread:
+              #设置调用者执行的超时时间（单位毫秒）
+              timeoutInMilliseconds: 1000
+management:
+  endpoints:
+      web:
+        exposure:
+          # 开启指定端点
+          include: 'hystrix.stream'
+
+
